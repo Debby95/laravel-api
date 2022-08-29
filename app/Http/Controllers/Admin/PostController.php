@@ -46,7 +46,7 @@ class PostController extends Controller
         $user = Auth::user();
 
         if($user->role === "admin"){
-            $posts = Post::orderBy("created_at", "desc")->get();
+            $posts = Post::orderBy("created_at", "desc")->paginate(6);
         } else {
             $posts = $user->posts;
         }
